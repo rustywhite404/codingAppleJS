@@ -1,0 +1,160 @@
+#box {
+    background: rgba(0,0,0,0.5);
+    position: fixed;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    display: none;
+    margin-top : -1200px; /*시작화면*/
+  }
+
+.main-background{
+    background-image: url(marble.jpg);
+    background-size:cover;
+    color:white;
+}
+
+.box-inner{
+    width:80%;
+    margin:100px auto;
+    background-color: white;
+    padding:50px;
+    border-radius: 10px;
+}
+
+.nav-menu{
+    position:fixed;
+    z-index: 5;
+    width:100%;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding:10px;
+    color:white;
+    font-size:20px;
+    transition: all 0.5s;
+}
+.nav-menu h4{
+    font-size: 32px;
+    margin:0;
+    transition: all 0.5s;
+}
+.nav-white{
+    background: white;
+    color: black;
+    font-size:14px;
+    transition: all 0.5s;
+}
+
+.nav-white h4{
+    font-size: 20px;
+    transition: all 0.5s;
+}
+
+.nav-sub{
+    display: none;
+}
+
+.left-menu {
+    width : 150px;
+    height : 100%;
+    background : black;
+    color : white;
+    position : fixed;
+    margin-left : -150px;
+}
+
+.slide-container{
+    width:400vw;   
+    transition: transform 1s;
+    transform: translate(0vw);
+}
+
+.slide-box{
+    width:100vw; /*vw: 뷰포트 기준 퍼센트*/
+    height:280px;
+    float:left;
+    overflow: hidden;
+}
+
+.slide-box img{
+    width:100%;
+}
+
+.sbtn{
+    width:8px;
+    height:10px;
+    background:black;
+    opacity: 0.4;
+    border:0;
+    border-radius:50%;
+}
+
+.buttonBox{
+    width:100px;
+    margin:0 auto;
+    text-align: center;
+}
+
+.slide-prev{
+    border:0;
+    background-color: transparent;
+    color: white;
+    letter-spacing: 3px;
+    position: absolute; 
+    top:48%;
+    left:10px;
+}
+
+.slide-next{
+    border:0;
+    background-color: transparent;
+    color: white;
+    letter-spacing: 3px;
+    position: absolute; 
+    top:48%;
+    right:10px;
+}
+
+ul.list {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	border-bottom: 1px solid #ccc;
+  }
+  ul.list::after {
+	content: '';
+	display: block;
+	clear: both;
+  }
+  .tab-button {
+	display: block;
+	padding: 10px 20px 10px 20px;
+	float: left;
+	margin-right: -1px;
+	margin-bottom: -1px;
+	color: grey;
+	text-decoration: none;
+	cursor: pointer;
+  }
+  .active {
+	border-top: 2px solid orange;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid white;
+	border-left: 1px solid #ccc;
+	color: black;
+	margin-top: -2px;
+  }
+  .tab-content {
+	display: none;
+	padding: 10px;
+  }
+  .tab-content p{
+    font-size: 12px;
+    line-height: 180%;
+    text-align: justify;
+  }
+  .show {
+	display: block;
+  }
