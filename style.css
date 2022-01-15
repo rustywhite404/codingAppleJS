@@ -22,6 +22,10 @@
     border-radius: 10px;
 }
 
+.transforming {
+    transition : transform 0.5s;
+}
+
 .nav-menu{
     position:fixed;
     z-index: 5;
