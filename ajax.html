@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+    <style>
+    .grey {
+    background: lightgrey;
+    height: 1500px;
+    margin-top: 50px;
+    }
+    .text {
+        float: left;
+        width : 300px;
+    }
+    .image {
+        float: right;
+        width : 400px;
+        position: sticky;
+        top: 0px;
+    }
+    </style>
+  </head>
+  <body style="background : grey;">   
+    <div class="container mt-4">
+      <h4 class="ajaxText">Ajax Practice</h4>
+      <div id="ajaxBox">
+        <button type="button" class="btn btn-secondary" id="ajaxBtn">Ajax버튼</button>
+        <button type="button" class="btn btn-secondary" id="moreBtn">상품 더보기</button>
+
+        <div class="card">
+            <img src="" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">임시 제목</h5>
+              <p class="card-text">임시 가격</p>
+              <a href="#" class="btn btn-primary">더 알아보기</a>
+            </div>
+        </div>
+      </div>
+    </div>  
+
+    <div class="container mt-4">
+        <div class="grey">
+            <div class="image">
+            <img src="dog.jpg" width="100%">
+            </div>
+        
+            <div style="clear : both"></div>
+            <div class="text">Meet the first Triple Camera System</div>
+            <!--position:sticky 사용 시 주의할 점
+            1. edge 이상에서만 사용 가능
+            2. 스크롤을 할 만한 부모 박스가 있어야 함
+            3. top 등 좌표 속성과 함께 써야 제대로 보임 -->
+        </div>
+    </div>
+        
+
+    <script
+    src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+    
+    <script>     
+    $.ajax({ //Ajax 사용 시 url, type 두 가지는 필수로 들어간다. 
+        url : 'https://codingapple1.github.io/hello.txt', 
+        type: 'GET'
+        //이렇게 쓰면 위 사이트에 GET 요청을 하겠다는 뜻이 된다. 
+    }).done(function(ex){ //ajax 뒤에 done함수를 붙이고 콜백 함수를 추가해준다. 콜백 함수에 파라미터를 아무거나 넣으면 받아온 데이터가 그 안에 들어간다. 
+        console.log(ex); //이제 받아온 데이터(ex)를 활용하면 끝!
+    }); 
+
+    //버튼을 누르면 Ajax 요청을 해서 데이터를 받아오고, 그 데이터로 h4의 글자를 바꿔보자 
+    $('#ajaxBtn').click(function(){
+        $.ajax({
+            url :'https://codingapple1.github.io/hello.txt',
+            type: 'GET'
+        }).done(function(e){
+            $('.ajaxText').html(e);
+        }).fail(function(jqXHR, textStatus, errorThrown){
+            //요청이 실패했을 때 실행할 코드
+            console.log(errorThrown); //textStatus, errorThrown를 출력해보면 Ajax 요청이 왜 실패했는지 알려준다.
+        }).always(function(){
+            //요청이 성공하든 실패하든 항상 실행할 코드
+        });
+    });
+
+    //더보기 버튼을 누르면 Ajax로 받아온 상품 정보가 데이터 바인딩 되도록 처리
+    $('#moreBtn').click(function(){
+        $.ajax({
+            url: 'https://codingapple1.github.io/data.json',
+            type: 'GET'
+        }).done(function(e){
+            $('.card-title').html(e.brand);
+            $('.card-text').html(e.price);
+            $('.card-img-top').attr("src",e.img);
+        });
+    });
+
+
+    //JSON 데이터 Object로 변환
+    //var objectList = JSON.parse(내가 가진 JSON데이터);
+
+    //Object를 JSON 데이터로 변환
+    //var jsonList = JSON.stringify(내가 가진 Object데이터);
+
+    // ajax를 사용하면 JSON을 가져와도 알아서 OBJECT로 변환하기 때문에 따로 처리하지 않아도 됨.
+
+    </script>
+
+  </body>
+</html>
