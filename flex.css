@@ -1,0 +1,72 @@
+*{
+    font-family: '조선일보명조';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.item{
+    padding:20px;
+    color:white;   
+    flex-basis:100px; /* 아이템의 기본 점유 크기(min-width같은?) 설정*/
+    flex-grow: 1; 
+    /* 아이템이 flex-basis보다 커질 수 있는지를 결정. 0보다 큰 값을 넣으면 원래 크기보다 커지며 빈 공간을 메우게 됨.
+    기본값은 0. 
+    숫자들의 의미 : basis를 제외한 여백을 설정한 숫자만큼의 비율로 나눠 가진다는 뜻.
+    */
+
+    flex-shrink:1; 
+    /* 아이템이 flex-basis보다 줄어들 수 있는지를 결정. 기본값은 1(줄어든다).
+    이걸 0으로 세팅하면 아이템이 flex-basis보다 작아지지 않으므로 고정폭 컬럼을 만들 수 있다.*/
+}
+
+.item:nth-child(1){
+    background-color: cadetblue;
+    flex-grow: 1; 
+    flex-shrink: 0;
+    width:300px;
+}
+
+.item:nth-child(2){
+    background-color: cornflowerblue;
+    font-size: 28px;;
+    flex-grow: 3; 
+    align-self: end;
+}
+
+.item:nth-child(3){
+    background-color: rgb(226, 133, 140);
+    font-size:40px;
+    flex-grow: 1; 
+}
+.container{
+    height:150px;
+    display: flex;
+    flex-direction: row;
+    /* 배치 방향 */
+
+    flex-wrap: wrap;
+    /* 가로길이가 부족할 때 어떻게 처리할 지 */
+
+    /* justify-content: flex-start; 시작점 기준 정렬*/
+    /* justify-content:flex-end; 끝점 기준 정렬 */
+    justify-content: center; /*중앙정렬*/
+    /* justify-content:space-between; 아이템 사잇간격 */ 
+    /* justify-content:space-around; 아이템 둘레 간격*/
+    /* justify-content:space-evenly; 아이템 사이와 양 끝에 동일한 간격. IE, 엣지 지원안함*/
+
+    /* align-items: stretch; 기본값. 부모 height에 맞춰서 쭉 늘어남*/
+	/* align-items: flex-start; 세로축 시작점 정렬*/
+	/* align-items: flex-end; 세로축 끝점 정렬 */
+	align-items: center;
+	/* align-items: baseline; 텍스트 베이스라인 기준 정렬*/
+
+    align-content: stretch;
+    /* flex-wrap이 wrap이라 아이템들의 행이 2줄 이상 되었을 때,
+    수직축 방향 정렬*/
+    /* align-content: flex-start; */
+	/* align-content: flex-end; */
+	/* align-content: center; */
+	/* align-content: space-between; */
+	/* align-content: space-around; */
+	/* align-content: space-evenly; */
+}
